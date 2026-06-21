@@ -1,13 +1,908 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Primera Página</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Museo San Josemaría | Propuesta</title>
+
+  <style>
+    :root {
+      --azul-noche: #0b1f35;
+      --azul-profundo: #12365a;
+      --dorado: #c9a45c;
+      --dorado-claro: #ead7a2;
+      --crema: #f7f0df;
+      --blanco: #ffffff;
+      --gris-texto: #53606f;
+      --sombra: 0 18px 45px rgba(0, 0, 0, 0.18);
+      --radio: 22px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--azul-noche);
+      background: var(--crema);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .contenedor {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 31, 53, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 164, 92, 0.25);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--blanco);
+      text-decoration: none;
+    }
+
+    .logo-icono {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+      display: grid;
+      place-items: center;
+      color: var(--azul-noche);
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 0 0 4px rgba(201, 164, 92, 0.15);
+    }
+
+    .logo-texto strong {
+      display: block;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    .logo-texto span {
+      display: block;
+      font-size: 12px;
+      color: var(--dorado-claro);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav button {
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 14px;
+      cursor: default;
+      padding: 8px 0;
+    }
+
+    nav button:hover {
+      color: var(--dorado-claro);
+    }
+
+    .btn-header {
+      border: 1px solid var(--dorado);
+      color: var(--dorado-claro);
+      border-radius: 999px;
+      padding: 10px 18px;
+      background: rgba(201, 164, 92, 0.1);
+      cursor: default;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 760px;
+      color: var(--blanco);
+      background:
+        linear-gradient(90deg, rgba(11, 31, 53, 0.95) 0%, rgba(11, 31, 53, 0.78) 47%, rgba(18, 54, 90, 0.55) 100%),
+        radial-gradient(circle at 75% 30%, rgba(201, 164, 92, 0.30), transparent 35%),
+        url("https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--crema), transparent);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 50px;
+      padding: 96px 0 140px;
+    }
+
+    .etiqueta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(234, 215, 162, 0.5);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--dorado-claro);
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .etiqueta::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--dorado);
+      box-shadow: 0 0 18px var(--dorado);
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.96;
+      margin-bottom: 24px;
+      letter-spacing: -1.8px;
+    }
+
+    .hero h1 span {
+      color: var(--dorado-claro);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .hero p {
+      max-width: 640px;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+
+    .acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: default;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-principal {
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+      color: var(--azul-noche);
+      box-shadow: 0 12px 28px rgba(201, 164, 92, 0.28);
+    }
+
+    .btn-secundario {
+      background: rgba(255, 255, 255, 0.10);
+      color: var(--blanco);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+    }
+
+    .tarjeta-hero {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(234, 215, 162, 0.28);
+      border-radius: 32px;
+      padding: 28px;
+      box-shadow: var(--sombra);
+      backdrop-filter: blur(10px);
+    }
+
+    .marco-santo {
+      min-height: 430px;
+      border-radius: 26px;
+      background:
+        linear-gradient(180deg, rgba(201,164,92,0.08), rgba(11,31,53,0.84)),
+        url("https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=900&q=80");
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(234, 215, 162, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .marco-santo::before {
+      content: "Espacio para imagen de San Josemaría";
+      position: absolute;
+      inset: auto 24px 24px 24px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(11, 31, 53, 0.76);
+      border: 1px solid rgba(234, 215, 162, 0.22);
+      color: var(--dorado-claro);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* ================= SECCIONES GENERALES ================= */
+
+    section {
+      padding: 88px 0;
+    }
+
+    .titulo-seccion {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .subtitulo {
+      color: var(--dorado);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .titulo-seccion p {
+      color: var(--gris-texto);
+      font-size: 17px;
+    }
+
+    /* ================= EXPERIENCIA ================= */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--blanco);
+      border-radius: var(--radio);
+      padding: 28px;
+      box-shadow: 0 14px 40px rgba(11, 31, 53, 0.08);
+      border: 1px solid rgba(11, 31, 53, 0.06);
+      min-height: 270px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-icono {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: rgba(201, 164, 92, 0.14);
+      color: var(--dorado);
+      font-size: 28px;
+      margin-bottom: 22px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--gris-texto);
+      font-size: 15px;
+    }
+
+    .card button {
+      margin-top: 22px;
+      align-self: flex-start;
+      border: 0;
+      background: transparent;
+      color: var(--azul-profundo);
+      font-weight: 800;
+      cursor: default;
+    }
+
+    /* ================= RECORRIDO ================= */
+
+    .recorrido {
+      background: var(--azul-noche);
+      color: var(--blanco);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .recorrido::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: rgba(201, 164, 92, 0.12);
+      top: -170px;
+      right: -120px;
+      filter: blur(2px);
+    }
+
+    .recorrido .titulo-seccion p {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      z-index: 2;
+    }
+
+    .paso {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(234, 215, 162, 0.20);
+      border-radius: var(--radio);
+      padding: 28px;
+    }
+
+    .paso .fecha {
+      display: inline-block;
+      color: var(--dorado-claro);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .paso h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .paso p {
+      color: rgba(255,255,255,0.74);
+    }
+
+    /* ================= GALERÍA ================= */
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1fr;
+      grid-auto-rows: 210px;
+      gap: 18px;
+    }
+
+    .foto {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(11,31,53,0.72), rgba(201,164,92,0.26)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 14px 34px rgba(11, 31, 53, 0.12);
+    }
+
+    .foto:nth-child(2) {
+      background-image:
+        linear-gradient(135deg, rgba(11,31,53,0.72), rgba(201,164,92,0.26)),
+        url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .foto:nth-child(3) {
+      background-image:
+        linear-gradient(135deg, rgba(11,31,53,0.72), rgba(201,164,92,0.26)),
+        url("https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .foto:nth-child(4) {
+      background-image:
+        linear-gradient(135deg, rgba(11,31,53,0.72), rgba(201,164,92,0.26)),
+        url("https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .foto.grande {
+      grid-row: span 2;
+    }
+
+    .foto.ancha {
+      grid-column: span 2;
+    }
+
+    .foto span {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      color: var(--blanco);
+      font-weight: 800;
+      font-size: 18px;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.35);
+    }
+
+    /* ================= CTA ================= */
+
+    .cta {
+      background:
+        linear-gradient(135deg, rgba(11, 31, 53, 0.95), rgba(18, 54, 90, 0.92)),
+        radial-gradient(circle at 20% 10%, rgba(201, 164, 92, 0.22), transparent 35%);
+      color: var(--blanco);
+      border-radius: 36px;
+      padding: 56px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 26px;
+      box-shadow: var(--sombra);
+    }
+
+    .cta h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: rgba(255,255,255,0.76);
+      max-width: 680px;
+    }
+
+    /* ================= INFO ================= */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .info-box {
+      background: var(--blanco);
+      border-radius: var(--radio);
+      padding: 32px;
+      box-shadow: 0 14px 40px rgba(11, 31, 53, 0.08);
+    }
+
+    .info-box h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .info-lista {
+      list-style: none;
+    }
+
+    .info-lista li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(11, 31, 53, 0.08);
+      color: var(--gris-texto);
+    }
+
+    .info-lista li strong {
+      color: var(--azul-noche);
+    }
+
+    .formulario-falso {
+      display: grid;
+      gap: 14px;
+    }
+
+    .formulario-falso input,
+    .formulario-falso textarea {
+      width: 100%;
+      border: 1px solid rgba(11, 31, 53, 0.12);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font: inherit;
+      background: #fbfaf6;
+      outline: none;
+    }
+
+    .formulario-falso textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .formulario-falso button {
+      justify-self: start;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: var(--azul-noche);
+      color: rgba(255,255,255,0.78);
+      padding: 42px 0;
+      border-top: 1px solid rgba(201, 164, 92, 0.22);
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-grid strong {
+      color: var(--dorado-claro);
+    }
+
+    .redes {
+      display: flex;
+      gap: 10px;
+    }
+
+    .redes button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(234, 215, 162, 0.28);
+      background: rgba(255,255,255,0.06);
+      color: var(--dorado-claro);
+      cursor: default;
+      font-weight: 800;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 920px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid,
+      .timeline,
+      .info-grid,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .galeria-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 240px;
+      }
+
+      .foto.grande,
+      .foto.ancha {
+        grid-row: auto;
+        grid-column: auto;
+      }
+
+      .cta {
+        padding: 36px 28px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      section {
+        padding: 64px 0;
+      }
+
+      .hero-grid {
+        padding: 72px 0 110px;
+      }
+
+      .tarjeta-hero {
+        padding: 18px;
+      }
+
+      .marco-santo {
+        min-height: 330px;
+      }
+
+      .acciones {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <h1>¡Hola Mundo!</h1>
+  <!-- HEADER -->
+  <header>
+    <div class="contenedor navbar">
+      <a class="logo" href="javascript:void(0)" aria-label="Museo San Josemaría">
+        <div class="logo-icono">SJ</div>
+        <div class="logo-texto">
+          <strong>Museo San Josemaría</strong>
+          <span>Propuesta web institucional</span>
+        </div>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><button type="button">Inicio</button></li>
+          <li><button type="button">El Museo</button></li>
+          <li><button type="button">Recorrido</button></li>
+          <li><button type="button">Galería</button></li>
+          <li><button type="button">Contacto</button></li>
+          <li><button class="btn-header" type="button">Visitar museo</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="contenedor hero-grid">
+        <div>
+          <div class="etiqueta">San Josemaría: huellas de santidad</div>
+          <h1>Un museo para <span>recordar, rezar y descubrir</span></h1>
+          <p>
+            Una propuesta digital para presentar la vida, el mensaje y la visita de
+            San Josemaría Escrivá al Perú, integrando historia, espiritualidad,
+            fotografías, testimonios y espacios de encuentro.
+          </p>
+
+          <div class="acciones">
+            <button class="btn btn-principal" type="button">Iniciar recorrido</button>
+            <button class="btn btn-secundario" type="button">Ver propuesta</button>
+          </div>
+        </div>
+
+        <div class="tarjeta-hero">
+          <div class="marco-santo"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section>
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <div class="subtitulo">Experiencia del museo</div>
+          <h2>Un recorrido pensado como encuentro</h2>
+          <p>
+            La página propone una navegación sencilla, visual y solemne, ideal para
+            presentar las salas del museo y motivar a los visitantes a conocer más.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div>
+              <div class="card-icono">✦</div>
+              <h3>Encuentro con el Padre</h3>
+              <p>
+                Espacio inicial con una imagen principal de San Josemaría,
+                breve bienvenida y una invitación a dejar intenciones.
+              </p>
+            </div>
+            <button type="button">Conocer más →</button>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="card-icono">⌖</div>
+              <h3>Huellas en el Perú</h3>
+              <p>
+                Sección dedicada a su visita al Perú, destacando Lima, Cañete,
+                encuentros, catequesis y momentos significativos.
+              </p>
+            </div>
+            <button type="button">Ver recorrido →</button>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="card-icono">☩</div>
+              <h3>Reliquias y memoria</h3>
+              <p>
+                Presentación de objetos, documentos, frases y testimonios que
+                ayudan a comprender su mensaje de santidad en la vida ordinaria.
+              </p>
+            </div>
+            <button type="button">Explorar sala →</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECORRIDO -->
+    <section class="recorrido">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <div class="subtitulo">Recorrido histórico</div>
+          <h2>San Josemaría en el Perú</h2>
+          <p>
+            Una sección visual para mostrar los momentos centrales de su visita,
+            acompañados de fotografías, mapas y frases breves.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="paso">
+            <span class="fecha">9 de julio de 1974</span>
+            <h3>Llegada al Perú</h3>
+            <p>
+              Inicio de una visita histórica marcada por encuentros de catequesis,
+              oración y cercanía con muchas familias peruanas.
+            </p>
+          </article>
+
+          <article class="paso">
+            <span class="fecha">Lima</span>
+            <h3>Encuentros y catequesis</h3>
+            <p>
+              Espacio para presentar fotografías, testimonios y frases que
+              expliquen su mensaje: buscar la santidad en lo ordinario.
+            </p>
+          </article>
+
+          <article class="paso">
+            <span class="fecha">Cañete</span>
+            <h3>Huellas fuera de la capital</h3>
+            <p>
+              Sección para destacar su paso por Cañete y la importancia pastoral
+              de su presencia en el territorio peruano.
+            </p>
+          </article>
+
+          <article class="paso">
+            <span class="fecha">1 de agosto de 1974</span>
+            <h3>Despedida y legado</h3>
+            <p>
+              Cierre del recorrido con el legado espiritual de San Josemaría y
+              su mensaje vivo para la comunidad parroquial.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section>
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <div class="subtitulo">Galería visual</div>
+          <h2>Fotografías, documentos y espacios del museo</h2>
+          <p>
+            Bloques pensados para colocar imágenes reales del museo, fotos antiguas,
+            paneles, mapas, vitrinas, frases y recursos audiovisuales.
+          </p>
+        </div>
+
+        <div class="galeria-grid">
+          <div class="foto grande"><span>Imagen principal del santo</span></div>
+          <div class="foto"><span>Panel histórico</span></div>
+          <div class="foto"><span>Mapa del recorrido</span></div>
+          <div class="foto ancha"><span>Ambiente del museo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LLAMADO A LA ACCIÓN -->
+    <section>
+      <div class="contenedor">
+        <div class="cta">
+          <div>
+            <h2>Una página para invitar a vivir la experiencia</h2>
+            <p>
+              Este diseño puede funcionar como portada institucional del museo,
+              presentación para redes, enlace informativo o propuesta inicial para
+              una futura web completa.
+            </p>
+          </div>
+
+          <button class="btn btn-principal" type="button">Solicitar visita guiada</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFORMACIÓN -->
+    <section>
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <div class="subtitulo">Información práctica</div>
+          <h2>Datos para el visitante</h2>
+          <p>
+            Sección editable para colocar horarios, ubicación, responsables y
+            medios de contacto cuando la propuesta sea aprobada.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <h3>Información del museo</h3>
+            <ul class="info-lista">
+              <li><strong>Nombre:</strong> Museo de San Josemaría</li>
+              <li><strong>Lugar:</strong> Parroquia San Josemaría Escrivá de Balaguer</li>
+              <li><strong>Horario:</strong> Del 22 al 30 de junio desde las 7:00 p.m.</li>
+              <li><strong>Ingreso:</strong> Espacio abierto para la comunidad</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3>Formulario visual</h3>
+            <form class="formulario-falso" action="javascript:void(0)">
+              <input type="text" placeholder="Nombre completo" />
+              <input type="email" placeholder="Correo electrónico" />
+              <textarea placeholder="Mensaje o consulta"></textarea>
+              <button class="btn btn-principal" type="button">Enviar consulta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="contenedor footer-grid">
+      <p>
+        <strong>Museo San Josemaría</strong><br />
+        Propuesta de página web institucional.
+      </p>
+
+      <div class="redes" aria-label="Botones visuales de redes sociales">
+        <button type="button">f</button>
+        <button type="button">ig</button>
+        <button type="button">yt</button>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
